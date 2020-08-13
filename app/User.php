@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the reputation record associated with the user.
+     */
+    public function reputation()
+    {
+        return $this->hasOne('App\Reputation');
+    }
 }
