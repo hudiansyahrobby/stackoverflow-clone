@@ -17,3 +17,13 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/newQuestions', 'QuestionController@create');
 Route::post('/question', 'QuestionController@store');
+Route::get('/view', function(){
+    return view('viewQuestions');
+});
+Route::get('/myProfile', function(){
+    return view('myProfile');
+});
+
+Route::get('/myQuestion', function(){
+    return view('myQuestion');
+});

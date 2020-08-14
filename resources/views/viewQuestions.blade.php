@@ -64,6 +64,7 @@ Sepertinya banyak untuk hal ini.</p></h5>
                             <br/>Post : 20 Aug 2020
                             </font>
                     </div>
+                    
                     {{-- <div class="p-2 bg-warning">Flex item 2</div> --}}
                     <div class="p-2">
                           <button type="button" class="btn btn-primary btn-sm">
@@ -72,8 +73,15 @@ Sepertinya banyak untuk hal ini.</p></h5>
                           <button type="button" class="btn btn-danger btn-sm">
                             Dislikes <span class="badge badge-light">4</span>
                           </button>
+                          
                     </div>
                   </div>
+                          <button type="button" class="btn btn-success btn-sm">
+                            Update
+                          </button>
+                          <button type="button" class="btn btn-danger btn-sm">
+                            Delete
+                          </button>
                 
                 {{-- <button type="submit" class="btn btn-primary">Submit New Question</button> --}}
             </form>

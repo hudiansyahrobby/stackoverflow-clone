@@ -26,7 +26,15 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="../gallery.html" class="nav-link">
+                <a href="/" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="/myProfile" class="nav-link">
                   <i class="nav-icon fas fa-chart-pie"></i>
                   <p>
                     My Profile
@@ -34,7 +42,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../gallery.html" class="nav-link">
+                <a href="/myQuestion" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     My Questions
