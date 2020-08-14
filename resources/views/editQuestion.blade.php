@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="title">Tags</label>
-                    <input type="text" class="form-control @error('tags') is-invalid @enderror" id="tags" placeholder="title" name="title" value="{{old('tags')}}">
+                    <input type="text" class="form-control @error('tags') is-invalid @enderror" id="tags" placeholder="tags" name="tags" value="{{old('tags')}}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Edit Question</button>

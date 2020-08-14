@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 
 class QuestionController extends Controller
@@ -46,7 +47,9 @@ class QuestionController extends Controller
         $question->user_id = Auth::id();
         $question->save();
 
-        return redirect('/')->with('status', 'Your Question Has been Added');
+        Alert::success('Success Title', 'Your Question Has been Added');
+
+        return redirect('/');
     }
 
     /**
@@ -69,7 +72,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        return view('editQuestion');
+        $question = Question::find($id);
+        return view('editQuestion', compact('question'));
     }
 
     /**
@@ -81,7 +85,15 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        $question->title = $request->title;
+        $question->content = $request->description;
+        $question->user_id = Auth::id();
+        $question->save();
+
+        Alert::success('Success Title', 'Your Question Has been Updated');
+
+        return redirect('/');
     }
 
     /**
@@ -92,7 +104,9 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Question::destroy($id);
+        Alert::success('Success Title', 'Your Question Has been Deleted');
+        return redirect('/');
     }
 
     /**

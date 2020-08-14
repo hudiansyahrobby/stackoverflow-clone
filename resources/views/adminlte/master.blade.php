@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,44 +17,48 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
     @include('adminlte.partials.navbar')
-  <!-- /.navbar -->
+    <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  @include('adminlte.partials.sidebar')
+    <!-- Main Sidebar Container -->
+    @include('adminlte.partials.sidebar')
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    @yield('content')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      @yield('content')
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2020
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- ./wrapper -->
 
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2020
-  </footer>
+  <!-- jQuery -->
+  <script src="{{asset('/adminLTE/plugins/jquery/jquery.min.js')}}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{asset('/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <!-- adminLTE App -->
+  <script src="{{asset('/adminLTE/dist/js/adminlte.min.js')}}"></script>
+  <!-- adminLTE for demo purposes -->
+  <script src="{{asset('/adminLTE/dist/js/demo.js')}}"></script>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+  @stack('scripts')
 
-<!-- jQuery -->
-<script src="{{asset('/adminLTE/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- adminLTE App -->
-<script src="{{asset('/adminLTE/dist/js/adminlte.min.js')}}"></script>
-<!-- adminLTE for demo purposes -->
-<script src="{{asset('/adminLTE/dist/js/demo.js')}}"></script>
-
-@stack('scripts')
+  @include('sweetalert::alert')
 
 </body>
+
 </html>
