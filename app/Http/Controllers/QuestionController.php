@@ -8,10 +8,11 @@ use Auth;
 
 class QuestionController extends Controller
 {
-    function __construct() {
+    function __construct()
+    {
         $this->middleware('auth')->except(['index', 'show']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +20,6 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -44,7 +44,6 @@ class QuestionController extends Controller
         $question->title = $request->title;
         $question->content = $request->description;
         $question->user_id = Auth::id();
-
         $question->save();
 
         return redirect('/')->with('status', 'Your Question Has been Added');

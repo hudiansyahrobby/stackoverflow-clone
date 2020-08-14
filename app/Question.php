@@ -12,4 +12,9 @@ class Question extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    public function user()
+    {
+        return $this->hasOne('App\User', 'user_id');
+    }
 }
