@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a href="/" class="brand-link">
       {{-- <img src="{{asset('/adminLTE/dist/img/AdminLTELogo.png')}}"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -34,7 +34,7 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a href="/myProfile" class="nav-link">
+                <a href="/home/{{ Auth::user()->id }}" class="nav-link">
                   <i class="nav-icon fas fa-chart-pie"></i>
                   <p>
                     My Profile
@@ -42,7 +42,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/myQuestion" class="nav-link">
+                <a href="/myQuestion/{{ Auth::user()->id }}" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     My Questions

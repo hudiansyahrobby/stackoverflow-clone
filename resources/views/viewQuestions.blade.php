@@ -28,9 +28,11 @@
                         <img class="direct-chat-img"
                             src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}"
                             alt="User Avatar" style="size: 10;margin-right:10px;">
-                        <font style="font-size: 12px">{{ $question->user->name }} ( <font style="color: blue"><b>{{ $question->user->reputation->point }}</b> contribution
+                        <font style="font-size: 12px">{{ $question->user->name }} ( <font style="color: blue">
+                                <b>{{ $question->user->reputation->point }}</b> contribution
                             </font> )
-                            <br />Post : {{ date('d M Y', strtotime($question->created_at)) }}
+                            <br />Post :
+                            {{ date('d M Y', strtotime($question->created_at)) }}
                         </font>
                     </div>
                     {{-- <div class="p-2 bg-warning">Flex item 2</div> --}}
@@ -79,7 +81,7 @@
                             <br />Post : 20 Aug 2020
                         </font>
                     </div>
-                    
+
                     {{-- <div class="p-2 bg-warning">Flex item 2</div> --}}
                     <div class="p-2">
                         <button type="button" class="btn btn-primary btn-sm">
@@ -87,24 +89,17 @@
                         </button>
                         <button type="button" class="btn btn-danger btn-sm">
                             Dislikes <span class="badge badge-light">4</span>
-<<<<<<< HEAD
-                          </button>
-                          
-                    </div>
-                  </div>
-                          <button type="button" class="btn btn-success btn-sm">
-                            Update
-                          </button>
-                          <button type="button" class="btn btn-danger btn-sm">
-                            Delete
-                          </button>
-                
-=======
                         </button>
+
                     </div>
                 </div>
+                <button type="button" class="btn btn-success btn-sm">
+                    Update
+                </button>
+                <button type="button" class="btn btn-danger btn-sm">
+                    Delete
+                </button>
 
->>>>>>> e9b6ffcee7af7d017a28c294b5c6bbf25cbee82f
                 {{-- <button type="submit" class="btn btn-primary">Submit New Question</button> --}}
             </form>
         </div>
