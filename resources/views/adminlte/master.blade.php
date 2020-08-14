@@ -12,7 +12,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{asset('/adminLTE/dist/css/adminLTE.min.css')}}">
+  <link rel="stylesheet" href="{{asset('/adminLTE/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -20,11 +20,11 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-    @include('adminLTE.partials.navbar')
+    @include('adminlte.partials.navbar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('adminLTE.partials.sidebar')
+  @include('adminlte.partials.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -49,7 +49,7 @@
 <!-- Bootstrap 4 -->
 <script src="{{asset('/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- adminLTE App -->
-<script src="{{asset('/adminLTE/dist/js/adminLTE.min.js')}}"></script>
+<script src="{{asset('/adminLTE/dist/js/adminlte.min.js')}}"></script>
 <!-- adminLTE for demo purposes -->
 <script src="{{asset('/adminLTE/dist/js/demo.js')}}"></script>
 
