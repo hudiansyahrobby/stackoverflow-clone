@@ -46,3 +46,5 @@ Route::get('/myProfile', function () {
 Route::get('/home/{user_id}', 'HomeController@show');
 
 Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
+
+Route::get('/tagQuestion/{tag_id}', 'TagController@showQuestions');

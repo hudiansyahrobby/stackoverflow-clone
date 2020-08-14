@@ -19,7 +19,9 @@
                 <br>
                 <label for="tags">
                     @forelse($question->tags as $tag)
-                        <button class="btn btn-primary">#{{ $tag->name }}</button>
+                        <a href="/tagQuestion/{{ $tag->id }}">
+                            <button class="btn btn-primary">#{{ $tag->name }}</button>
+                        </a>
                     @empty
                         <p>Tidak ada tags</p>
                     @endforelse

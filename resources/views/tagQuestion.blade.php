@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="mt-3 ml-3">
-        @forelse($user->questions as $key => $question)
+        @forelse($tag->questions as $question)
             <div class="card p-3">
                 <div class="form-group">
                     <label for="title">

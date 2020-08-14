@@ -19,4 +19,12 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = ['name'];
+
+    /**
+     * The questions that belong to the tag.
+     */
+    public function questions()
+    {
+        return $this->belongsToMany('App\Question');
+    }
 }
