@@ -63,11 +63,13 @@
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                         {{ $comment->content }}
-                        <form action="" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" class="btn btn-danger btn-xs" value="Delete">
-                        </form>
+                        @if($comment->user_id == Auth::user()->id)
+                            <form action="" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                            </form>
+                        @endif
                     </div>
                     <!-- /.direct-chat-text -->
                 </div>
@@ -97,11 +99,13 @@
     @forelse($question->answers as $answer)
         <div class="mt-3 ml-3">
             <div class="card p-3">
-                <div class="d-flex mb-1">
-                    <button type="button" class="btn btn-warning btn-sm">
-                        BEST ANSWER
-                    </button>
-                </div>
+                @if($answer->user_id == Auth::user()->id)
+                    <div class="d-flex mb-1">
+                        <button type="button" class="btn btn-warning btn-sm">
+                            BEST ANSWER
+                        </button>
+                    </div>
+                @endif
 
                 <div class="form-group">
                     <label for="content">
@@ -132,16 +136,18 @@
                     </div>
                 </div>
 
-                <div class="d-flex">
-                    <a href="/answer/{{ $question->id }}/edit" class="btn btn-success btn-sm mr-1">
-                        Update
-                    </a>
-                    <form action="/answer/{{ $question->id }}/delete" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                    </form>
-                </div>
+                @if($answer->user_id == Auth::user()->id)
+                    <div class="d-flex">
+                        <a href="/answer/{{ $question->id }}/edit" class="btn btn-success btn-sm mr-1">
+                            Update
+                        </a>
+                        <form action="/answer/{{ $question->id }}/delete" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                        </form>
+                    </div>
+                @endif
 
                 @forelse($answer->comments as $comment)
                     <div class="direct-chat-msg">
@@ -157,11 +163,13 @@
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                             {{ $comment->content }}
-                            <form action="" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" class="btn btn-danger btn-xs" value="Delete">
-                            </form>
+                            @if($comment->user_id == Auth::user()->id)
+                                <form action="" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                                </form>
+                            @endif
                         </div>
                         <!-- /.direct-chat-text -->
                     </div>
