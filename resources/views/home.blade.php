@@ -52,7 +52,7 @@
                     </li>
                     <li class="nav-item">
                       <center>
-                          <a href="#" class="nav-link">Views</a>
+                          <a href="/view" class="nav-link">Views</a>
                     </center>
                     </li>
                   </ul>
