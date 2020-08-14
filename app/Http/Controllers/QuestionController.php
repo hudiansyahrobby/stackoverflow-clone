@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Question;
+use Auth;
 
 class QuestionController extends Controller
 {
@@ -27,7 +29,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('newQuestions');
     }
 
     /**
@@ -38,7 +40,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question = new Question;
+        $question->title = $request->title;
+        $question->content = $request->description;
+        $question->user_id = Auth::id();
+
+        $question->save();
+
+        return redirect('/')->with('status', 'Your Question Has been Added');
     }
 
     /**
