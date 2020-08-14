@@ -29,7 +29,7 @@
                     <input type="text" class="form-control @error('tags') is-invalid @enderror" id="tags" placeholder="title" name="title" value="{{old('tags')}}">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit New Question</button>
+                <button type="submit" class="btn btn-primary">Edit Question</button>
             </form>
         </div>
     </div>

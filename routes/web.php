@@ -40,3 +40,7 @@ Route::get('/view', function () {
 Route::get('/myProfile', function () {
     return view('myProfile');
 });
+
+Route::get('/home/{user_id}', 'HomeController@show');
+
+Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');

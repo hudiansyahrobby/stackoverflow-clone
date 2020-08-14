@@ -28,11 +28,11 @@
                 <div class="d-flex justify-content-between mb-2">
                     <div class="p-2">
                         <img class="direct-chat-img" src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}" alt="User Avatar" style="size: 10;margin-right:10px;">
-                        <font style="font-size: 12px">{{ $question->user->name }}
-                            ( <font style="color: blue">
+                        <font style="font-size: 12px">{{ $question->user->name }} ( <font style="color: blue">
                                 <b>{{ $question->user->reputation->point }}</b> contribution
                             </font> )
-                            <br />Post : {{ date('d M Y', strtotime($question->created_at)) }}
+                            <br />Post :
+                            {{ date('d M Y', strtotime($question->created_at)) }}
                         </font>
                     </div>
                     <div class="p-2">
@@ -93,6 +93,7 @@
                 <form action="/answer/delete" method="post">
                     <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                 </form>
+
             </form>
         </div>
     </div>

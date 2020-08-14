@@ -44,4 +44,20 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Reputation');
     }
+
+    /**
+     * Get the questions for the blog post.
+     */
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
+    }
+
+    /**
+     * Get the answers for the blog post.
+     */
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
 }
