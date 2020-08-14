@@ -16,18 +16,27 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/newQuestions', 'QuestionController@create');
-Route::post('/question', 'QuestionController@store');
-<<<<<<< HEAD
-Route::get('/view', function(){
-    return view('viewQuestions');
-});
-Route::get('/myProfile', function(){
-    return view('myProfile');
-});
 
-Route::get('/myQuestion', function(){
+Route::post('/question', 'QuestionController@store');
+
+Route::get('/question/{question_id}', 'QuestionController@show');
+
+Route::get('/question/{question_id}/edit', 'QuestionController@edit');
+
+Route::post('/question/{question_id}', 'QuestionController@update');
+
+Route::get('/answer/{question_id}', 'AnswerController@create');
+
+Route::post('/answer', 'AnswerController@store');
+
+Route::get('/myQuestion', function () {
     return view('myQuestion');
 });
-=======
-Route::get('/question/{question_id}', 'QuestionController@show');
->>>>>>> e9b6ffcee7af7d017a28c294b5c6bbf25cbee82f
+
+Route::get('/view', function () {
+    return view('viewQuestions');
+});
+
+Route::get('/myProfile', function () {
+    return view('myProfile');
+});

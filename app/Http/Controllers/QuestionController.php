@@ -69,7 +69,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('editQuestion');
     }
 
     /**

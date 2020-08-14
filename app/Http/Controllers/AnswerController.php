@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class AnswerController extends Controller
 {
 
-    function __construct() {
+    function __construct()
+    {
         $this->middleware('auth')->except(['index', 'show']);
     }
 
@@ -19,7 +20,7 @@ class AnswerController extends Controller
 
     public function create()
     {
-        //
+        return view('newAnswer');
     }
 
     /**

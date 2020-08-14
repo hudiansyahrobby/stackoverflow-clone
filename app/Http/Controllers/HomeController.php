@@ -8,10 +8,7 @@ use App\Question;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+https://www.youtube.com/     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,7 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user:id,name')->get();
+        $questions = Question::all();
         return view('home', compact('questions'));
     }
 }
