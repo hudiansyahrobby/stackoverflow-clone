@@ -20,4 +20,19 @@ class Question extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'content', 'user_id'];
+
+    /**
+     * The tags that belong to the question.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }

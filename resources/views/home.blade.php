@@ -29,9 +29,11 @@
                         </li>
                         <li class="nav-item">
                             <div style="padding:10px;text-align:center;">
-                                <button class="btn btn-primary">#html</button>
-                                <button class="btn btn-success">#laravel</button>
-                                <button class="btn btn-warning">#others</button>
+                                @forelse ($question->tags as $tag)
+                                    <button class="btn btn-primary">#{{ $tag->name }}</button>
+                                @empty
+                                    <p>Tidak ada tags</p>
+                                @endforelse
                             </div>
                         </li>
                         <li class="nav-item">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Tag;
 use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 
@@ -41,13 +42,38 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $question = new Question;
-        $question->title = $request->title;
-        $question->content = $request->description;
-        $question->user_id = Auth::id();
-        $question->save();
+        // Handle the tags first
+        // 1. Remove whitespace and turn to array
+        $tags_arr = explode(',', trim($request['tags']));
 
-        Alert::success('Success', 'Your Question Has been Added');
+        // 2. Looping into array
+        $tag_ids = [];
+        foreach ($tags_arr as $tag_name) {
+            $tag = Tag::where('name', $tag_name)->first();
+
+            // 3. If tag already exist, take the ID
+            if($tag) {
+                $tag_ids[] = $tag->id;
+            } 
+            // 4. If not, save it first and take the ID
+            else {
+                $new_tag = Tag::create([
+                    'name' => $tag_name
+                ]);
+                $tag_ids[] = $new_tag->id;
+            }
+        }
+
+        // Save the question
+        $question = Question::create([
+            'title' => $request['title'],
+            'content' => $request['description'],
+            'user_id' => Auth::id(),
+        ]);
+
+        $question->tags()->sync($tag_ids);
+        
+        Alert::success('Success Title', 'Your Question Has been Added');
 
         return redirect('/');
     }

@@ -18,14 +18,18 @@
                 </label>
                 <br>
                 <label for="tags">
-                    <button class="btn btn-primary btn-xs">#html</button>
-                    <button class="btn btn-success btn-xs">#laravel</button>
-                    <button class="btn btn-warning btn-xs">#others</button>
+                    @forelse($question->tags as $tag)
+                        <button class="btn btn-primary">#{{ $tag->name }}</button>
+                    @empty
+                        <p>Tidak ada tags</p>
+                    @endforelse
                 </label>
             </div>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-2">
-                    <img class="direct-chat-img" src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}" alt="User Avatar" style="size: 10;margin-right:10px;">
+                    <img class="direct-chat-img"
+                        src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}"
+                        alt="User Avatar" style="size: 10;margin-right:10px;">
                     <font style="font-size: 12px">{{ $question->user->name }} ( <font style="color: blue">
                             <b>{{ $question->user->reputation->point }}</b> contribution
                         </font> )
@@ -68,7 +72,9 @@
             </div>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-2">
-                    <img class="direct-chat-img" src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}" alt="User Avatar" style="size: 10;margin-right:10px;">
+                    <img class="direct-chat-img"
+                        src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}"
+                        alt="User Avatar" style="size: 10;margin-right:10px;">
                     <font style="font-size: 12px">@username ( <font style="color: blue"><b>21</b> contribution
                         </font> )
                         <br />Post : 20 Aug 2020
@@ -87,7 +93,7 @@
             </div>
 
             <div class="d-flex">
-                <a href="/answer/{{$question->id}}/edit" class="btn btn-success btn-sm mr-1">
+                <a href="/answer/{{ $question->id }}/edit" class="btn btn-success btn-sm mr-1">
                     Update
                 </a>
                 <form action="/answer/delete" method="post">
