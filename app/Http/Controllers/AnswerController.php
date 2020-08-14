@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
+use App\Comment;
+use App\Question;
+use Auth;
 
 class AnswerController extends Controller
 {
@@ -25,9 +28,9 @@ class AnswerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function create($id)
     {
-        return view('newAnswer');
+        return view('newAnswer', compact('id'));
     }
 
     /**
@@ -36,9 +39,16 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $answer = Answer::create([
+            'content' => $request['description'],
+            'user_id' => Auth::id(),
+            'question_id' => $id,
+        ]);
+
+        $question = Question::find($id);
+        return view('viewQuestions', compact('question'));
     }
 
     /**

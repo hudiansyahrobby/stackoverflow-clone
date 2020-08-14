@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Answer;
 use App\Question;
 use Auth;
 
@@ -44,6 +45,25 @@ class CommentController extends Controller
             'question_id' => $id,
         ]);
         $question = Question::find($id);
+        return view('viewQuestions', compact('question'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeA(Request $request, $id)
+    {
+        $comment = Comment::create([
+            'content' => $request['comment'],
+            'user_id' => Auth::id(),
+            'answer_id' => $id,
+            'question_id' => null,
+        ]);
+        $answer = Answer::find($id);
+        $question = Question::find($answer->question_id);
         return view('viewQuestions', compact('question'));
     }
 

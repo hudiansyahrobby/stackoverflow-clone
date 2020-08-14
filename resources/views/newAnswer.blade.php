@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="mt-3 ml-3">
         <div class="card p-3">
-            <form method="post" action="/answer">
+            <form method="post" action="/answer/{{ $id }}">
                 @csrf
                 <div class="form-group">
                     <label for="content">Answer</label>
@@ -18,6 +18,7 @@
                             width: 900,
                             height: 300
                         });
+
                     </script>
                 </div>
 
