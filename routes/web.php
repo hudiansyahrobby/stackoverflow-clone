@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/newQuestions', 'QuestionController@create');
 Route::post('/question', 'QuestionController@store');
+<<<<<<< HEAD
 Route::get('/view', function(){
     return view('viewQuestions');
 });
@@ -27,3 +28,6 @@ Route::get('/myProfile', function(){
 Route::get('/myQuestion', function(){
     return view('myQuestion');
 });
+=======
+Route::get('/question/{question_id}', 'QuestionController@show');
+>>>>>>> e9b6ffcee7af7d017a28c294b5c6bbf25cbee82f
