@@ -29,7 +29,7 @@
               </div>
               <!-- /.widget-user-image -->
               <div style="margin-left:100px;margin-bottom:20px;">
-                <span>{{ $question->user_id }}</span>
+                <span>{{ $question->user->name }}</span>
                 <br />
                 <span>{{ explode(" ", $question->created_at)[0] }}</span>
               </div>

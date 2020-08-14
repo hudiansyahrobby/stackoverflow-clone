@@ -13,8 +13,11 @@ class Question extends Model
      */
     public $timestamps = true;
 
+    /**
+     * Get the user that owns the question.
+     */
     public function user()
     {
-        return $this->hasOne('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 }
