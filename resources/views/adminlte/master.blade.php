@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -23,10 +24,14 @@
   <div class="wrapper">
     <!-- Navbar -->
     @include('adminlte.partials.navbar')
+    @if (Auth::check())
+
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
+    
     @include('adminlte.partials.sidebar')
+    
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -62,3 +67,7 @@
 </body>
 
 </html>
+@else
+<img src="{{ asset('/FHY.png')}}" style="height:400px;width:100%">
+  @yield('content')
+@endif
