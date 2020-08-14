@@ -9,7 +9,7 @@
                     <label for="title">
                         <h3>{{ $question->title }}</h3>
                     </label>
-                    <a href="/question/{{ $question->id }}/edit" class="btn btn-warning btn-sm float-right">Edit</a>
+                    
                 </div>
                 <label for="content">
                     <h5>
@@ -48,6 +48,36 @@
                     </button>
                 </div>
             </div>
+            <div class="direct-chat-msg">
+                <div class="direct-chat-infos clearfix">
+                  <span class="direct-chat-name float-left">Alexander Pierce</span>
+                  <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                </div>
+                <!-- /.direct-chat-infos -->
+                <img class="direct-chat-img" src="{{ asset('/adminLTE/dist/img/user1-128x128.jpg')}}" alt="Message User Image">
+                <!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  Is this template really for free? That's unbelievable!
+                  <form action="" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                </form>
+                </div>
+                <!-- /.direct-chat-text -->
+                
+              </div>
+              <!-- /.direct-chat-msg -->
+
+              <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="comment" placeholder="Type comment" name="comment" value="{{old('comment')}}">
+                  <span class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                  </span>
+                </div>
+              </form>
+              <br/>
         </div>
     </div>
     <a href="/answer/{{ $question->id }}" type="button" class="btn btn-primary btn-sm" style="margin-left: 20px">

@@ -49,6 +49,22 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/myQuestion/{{ Auth::user()->id }}" class="nav-link">
+                  <i class="nav-icon fas fa-edit"></i>
+                  <p>
+                    My Answers
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/myQuestion/{{ Auth::user()->id }}" class="nav-link">
+                  <i class="nav-icon fas fa-edit"></i>
+                  <p>
+                    My Comments
+                  </p>
+                </a>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
