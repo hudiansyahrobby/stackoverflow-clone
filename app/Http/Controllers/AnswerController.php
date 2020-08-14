@@ -69,7 +69,7 @@ class AnswerController extends Controller
     }
 
     /**
-     * Upvote Questions.
+     * Upvote answer.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -80,7 +80,7 @@ class AnswerController extends Controller
     }
 
     /**
-     * Downvote Questions.
+     * Downvote answer.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -91,7 +91,7 @@ class AnswerController extends Controller
     }
 
     /**
-     * Comment Questions.
+     * Comment answer.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

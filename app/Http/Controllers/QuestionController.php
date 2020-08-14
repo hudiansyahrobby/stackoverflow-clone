@@ -47,7 +47,7 @@ class QuestionController extends Controller
         $question->user_id = Auth::id();
         $question->save();
 
-        Alert::success('Success Title', 'Your Question Has been Added');
+        Alert::success('Success', 'Your Question Has been Added');
 
         return redirect('/');
     }
@@ -91,7 +91,7 @@ class QuestionController extends Controller
         $question->user_id = Auth::id();
         $question->save();
 
-        Alert::success('Success Title', 'Your Question Has been Updated');
+        Alert::success('Success', 'Your Question Has been Updated');
 
         return redirect('/');
     }
@@ -105,7 +105,7 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         Question::destroy($id);
-        Alert::success('Success Title', 'Your Question Has been Deleted');
+        Alert::success('Success', 'Your Question Has been Deleted');
         return redirect('/');
     }
 
