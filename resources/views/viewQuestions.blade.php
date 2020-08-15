@@ -35,7 +35,7 @@
                             <b>{{ $question->user->reputation->point }}</b> reputation
                         </font> )
                         <br />Post :
-                        {{ date('d M Y', strtotime($question->updated_at)) }}
+                        {{ date('d M Y, g:i a', strtotime($question->updated_at)) }}
                     </font>
                 </div>
                 <div class="p-2">
@@ -53,7 +53,7 @@
                     <div class="direct-chat-infos clearfix">
                         <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
                         <span class="direct-chat-timestamp float-right">
-                            {{ date('d M, g:i a', strtotime($comment->updated_at)) }}
+                            {{ date('d M Y, g:i a', strtotime($comment->updated_at)) }}
                         </span>
                     </div>
                     <!-- /.direct-chat-infos -->
@@ -123,7 +123,7 @@
                                 <b>{{ $answer->user->reputation->point }}</b> reputation
                             </font> )
                             <br />Post :
-                            {{ date('d M Y', strtotime($answer->updated_at)) }}
+                            {{ date('d M Y, g:i a', strtotime($answer->updated_at)) }}
                         </font>
                     </div>
 
@@ -155,7 +155,7 @@
                         <div class="direct-chat-infos clearfix">
                             <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
                             <span class="direct-chat-timestamp float-right">
-                                {{ date('d M, g:i a', strtotime($comment->updated_at)) }}
+                                {{ date('d M Y, g:i a', strtotime($comment->updated_at)) }}
                             </span>
                         </div>
                         <!-- /.direct-chat-infos -->

@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $questions = Question::all();
+        $questions = Question::all()->sortByDesc('updated_at');;
         return view('home', compact('questions'));
     }
 

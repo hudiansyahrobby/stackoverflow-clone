@@ -26,7 +26,7 @@
                                 <div style="margin-left:100px;margin-bottom:20px;">
                                     <span>{{ $question->user->name }}</span>
                                     <br />
-                                    <span>{{ date('d M Y', strtotime($question->created_at)) }}</span>
+                                    <span>{{ date('d M Y, g:i a', strtotime($question->updated_at)) }}</span>
                                 </div>
                             </li>
                             <li class="nav-item">
