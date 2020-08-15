@@ -19,7 +19,7 @@
                 elevation-2" alt="User Image">
             </div> --}}
             <div class="info">
-                <a href="#" class="d-block">
+                <a class="d-block">
                     <center>Welcome , {{ Auth::user()->name }}</center>
                 </a>
             </div>
@@ -51,22 +51,6 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             My Questions
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/myAnswer/{{ Auth::user()->id }}" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            My Answers
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/myComment/{{ Auth::user()->id }}" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            My Comments
                         </p>
                     </a>
                 </li>

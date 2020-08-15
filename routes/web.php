@@ -19,8 +19,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 Route::get('/myProfile/{user_id}', 'HomeController@showProfile');
 Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
-Route::get('/myAnswer/{user_id}', 'HomeController@showAnswers');
-Route::get('/myComment/{user_id}', 'HomeController@showComments');
 
 // Question Route --> from QuestionController
 Route::get('/question', 'QuestionController@create');

@@ -65,12 +65,14 @@
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                         {{ $comment->content }}
-                        @if($comment->user_id == Auth::user()->id)
-                            <form action="/comment/{{ $comment->id }}/delete" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" class="btn btn-danger btn-xs" value="Delete">
-                            </form>
+                        @if (Auth::check())
+                            @if($comment->user_id == Auth::user()->id)
+                                <form action="/comment/{{ $comment->id }}/delete" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                                </form>
+                            @endif
                         @endif
                     </div>
                     <!-- /.direct-chat-text -->
@@ -79,7 +81,7 @@
                 <p>Belum ada komentar</p>
             @endforelse
 
-            <!-- /.direct-chat-msg -->
+            
             <form action="/commentQuestion/{{ $question->id }}" method="POST">
                 @csrf
                 <div class="input-group">
@@ -90,6 +92,7 @@
                     </span>
                 </div>
             </form>
+           
             <br />
         </div>
     </div>
@@ -132,17 +135,19 @@
                         </div>
                     </div>
 
-                    @if($answer->user_id == Auth::user()->id)
-                        <div class="d-flex">
-                            <a href="/answer/{{ $answer->id }}/edit" class="btn btn-success btn-sm mr-1">
-                                Update
-                            </a>
-                            <form action="/answer/{{ $answer->id }}/delete" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                            </form>
-                        </div>
+                    @if (Auth::check())
+                        @if($answer->user_id == Auth::user()->id)
+                            <div class="d-flex">
+                                <a href="/answer/{{ $answer->id }}/edit" class="btn btn-success btn-sm mr-1">
+                                    Update
+                                </a>
+                                <form action="/answer/{{ $answer->id }}/delete" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                </form>
+                            </div>
+                        @endif
                     @endif
 
                     @forelse($answer->comments as $comment)
@@ -160,12 +165,14 @@
                             <!-- /.direct-chat-img -->
                             <div class="direct-chat-text">
                                 {{ $comment->content }}
-                                @if($comment->user_id == Auth::user()->id)
-                                    <form action="/comment/{{ $comment->id }}/delete" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" class="btn btn-danger btn-xs" value="Delete">
-                                    </form>
+                                @if (Auth::check())
+                                    @if($comment->user_id == Auth::user()->id)
+                                        <form action="/comment/{{ $comment->id }}/delete" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                                        </form>
+                                    @endif
                                 @endif
                             </div>
                             <!-- /.direct-chat-text -->
@@ -173,6 +180,7 @@
                     @empty
                         <p>Belum ada komentar</p>
                     @endforelse
+
 
                     <form action="/commentAnswer/{{ $answer->id }}" method="post">
                         @csrf
@@ -196,14 +204,16 @@
             <div class="mt-3 ml-3">
                 <div class="card p-3">
 
-                    @if($question->user_id != $answer->user_id
-                        && $question->user_id == Auth::user()->id)
-                        @if($question->best_answer_id != $answer->id)
-                            <div class="d-flex mb-1">
-                                <a href="/question/{{ $answer->id }}/best" type="button" class="btn btn-warning btn-sm">
-                                    BEST ANSWER
-                                </a>
-                            </div>
+                    @if (Auth::check())
+                        @if($question->user_id != $answer->user_id
+                            && $question->user_id == Auth::user()->id)
+                            @if($question->best_answer_id != $answer->id)
+                                <div class="d-flex mb-1">
+                                    <a href="/question/{{ $answer->id }}/best" type="button" class="btn btn-warning btn-sm">
+                                        BEST ANSWER
+                                    </a>
+                                </div>
+                            @endif
                         @endif
                     @endif
 
@@ -237,17 +247,19 @@
                         </div>
                     </div>
 
-                    @if($answer->user_id == Auth::user()->id)
-                        <div class="d-flex">
-                            <a href="/answer/{{ $answer->id }}/edit" class="btn btn-success btn-sm mr-1">
-                                Update
-                            </a>
-                            <form action="/answer/{{ $answer->id }}/delete" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                            </form>
-                        </div>
+                    @if (Auth::check())
+                        @if($answer->user_id == Auth::user()->id)
+                            <div class="d-flex">
+                                <a href="/answer/{{ $answer->id }}/edit" class="btn btn-success btn-sm mr-1">
+                                    Update
+                                </a>
+                                <form action="/answer/{{ $answer->id }}/delete" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                </form>
+                            </div>
+                        @endif
                     @endif
 
                     @forelse($answer->comments as $comment)
@@ -265,12 +277,14 @@
                             <!-- /.direct-chat-img -->
                             <div class="direct-chat-text">
                                 {{ $comment->content }}
-                                @if($comment->user_id == Auth::user()->id)
-                                    <form action="/comment/{{ $comment->id }}/delete" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" class="btn btn-danger btn-xs" value="Delete">
-                                    </form>
+                                @if (Auth::check())
+                                    @if($comment->user_id == Auth::user()->id)
+                                        <form action="/comment/{{ $comment->id }}/delete" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                                        </form>
+                                    @endif
                                 @endif
                             </div>
                             <!-- /.direct-chat-text -->

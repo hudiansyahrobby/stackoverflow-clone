@@ -11,6 +11,11 @@ use Auth;
 
 class CommentController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+    
     /**
      * Store a newly created resource in storage.
      *

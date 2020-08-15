@@ -47,28 +47,4 @@ class HomeController extends Controller
         $user = User::find($id);
         return view('myQuestion', compact('user'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showAnswers($id)
-    {
-        $user = User::find($id);
-        return view('myAnswer', compact('user'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showComments($id)
-    {
-        $user = User::find($id);
-        return view('myComment', compact('user'));
-    }
 }

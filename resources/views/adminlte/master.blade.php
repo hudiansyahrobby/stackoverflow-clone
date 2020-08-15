@@ -24,30 +24,26 @@
     <div class="wrapper">
         <!-- Navbar -->
         @include('adminlte.partials.navbar')
-        @if(Auth::check())
+        <!-- /.navbar -->
 
-            <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        @include('adminlte.partials.sidebar')
 
-            <!-- Main Sidebar Container -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
+        <!-- /.content-wrapper -->
 
-            @include('adminlte.partials.sidebar')
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2020
+        </footer>
 
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                @yield('content')
-            </div>
-            <!-- /.content-wrapper -->
-
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2020
-            </footer>
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -62,13 +58,6 @@
     <script src="{{ asset('/adminLTE/dist/js/demo.js') }}"></script>
 
     @stack('scripts')
-
     @include('sweetalert::alert')
-
 </body>
-
 </html>
-@else
-<img src="{{ asset('/FHY.png') }}" style="height:400px;width:100%">
-@yield('content')
-@endif

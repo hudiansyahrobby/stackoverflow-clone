@@ -13,6 +13,11 @@ use Auth;
 
 class VoteController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Upvote question
      *
