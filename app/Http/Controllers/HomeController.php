@@ -47,4 +47,11 @@ class HomeController extends Controller
         $user = User::find($id);
         return view('myQuestion', compact('user'));
     }
+
+    public function showAnswers($id)
+    {
+        $user = User::find($id);
+        return view('myAnswer', compact('user'));
+    }
+
 }

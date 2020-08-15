@@ -17,10 +17,11 @@ class AnswerController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index()
-    {
-        return view('myAnswer');
-    }
+    // public function index($id)
+    // {
+    //     $user = User::find($id);
+    //     return view('myAnswer', compact('user'));
+    // }
 
 
     /**

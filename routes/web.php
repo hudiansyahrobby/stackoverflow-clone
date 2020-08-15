@@ -14,6 +14,7 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 // Question Route
 Route::get('/newQuestions', 'QuestionController@create');
@@ -29,7 +30,7 @@ Route::post('/answer/{question_id}', 'AnswerController@store');
 Route::get('/answer/{answer_id}/edit', 'AnswerController@edit');
 Route::post('/answer/{answer_id}/update', 'AnswerController@update');
 Route::delete('/answer/{answer_id}/delete', 'AnswerController@destroy');
-Route::get('/myanswer/{user_id}', 'AnswerController@index');
+Route::get('/myanswer/{user_id}', 'HomeController@showAnswers');
 Route::get('/mycomment/{user_id}', 'AnswerController@comment');
 
 // Comment Route

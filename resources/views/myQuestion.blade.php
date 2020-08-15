@@ -32,7 +32,7 @@
                             src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}"
                             alt="User Avatar" style="size: 10;margin-right:10px;">
                         <font style="font-size: 12px">{{ $question->user->name }} ( <font style="color: blue">
-                                <b>{{ $question->user->reputation->point }}</b> contribution
+                                <b>{{ $question->user->reputation->point }}</b> reputation
                             </font> )
                             <br />Post :
                             {{ date('d M Y', strtotime($question->created_at)) }}
