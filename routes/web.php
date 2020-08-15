@@ -16,8 +16,10 @@ Auth::routes();
 
 // Home Route --> from HomeController
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home/{user_id}', 'HomeController@show');
+Route::get('/myProfile/{user_id}', 'HomeController@showProfile');
 Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
+Route::get('/myAnswer/{user_id}', 'HomeController@showAnswers');
+Route::get('/myComment/{user_id}', 'HomeController@showComments');
 
 // Question Route --> from QuestionController
 Route::get('/question', 'QuestionController@create');
@@ -28,14 +30,13 @@ Route::post('/question/{question_id}/update', 'QuestionController@update');
 Route::delete('/question/{question_id}/delete', 'QuestionController@destroy');
 
 // Answer Route --> from AnswerController
-Route::get('/myanswer/{user_id}', 'AnswerController@index');
 Route::get('/answer/{question_id}', 'AnswerController@create');
 Route::post('/answer/{question_id}', 'AnswerController@store');
 Route::get('/answer/{answer_id}/edit', 'AnswerController@edit');
 Route::post('/answer/{answer_id}/update', 'AnswerController@update');
 Route::delete('/answer/{answer_id}/delete', 'AnswerController@destroy');
 
-// Comment Route
+// Comment Route --> from CommentController
 Route::post('/commentQuestion/{question_id}', 'CommentController@storeQ');
 Route::post('/commentAnswer/{answer_id}', 'CommentController@storeA');
 Route::delete('/comment/{comment_id}/delete', 'CommentController@destroy');
@@ -45,23 +46,6 @@ Route::delete('/comment/{comment_id}/delete', 'CommentController@destroy');
 
 // Tag Route
 Route::get('/tagQuestion/{tag_id}', 'TagController@showQuestions');
-
-
-/*
- * Route yang belum terpakai
- */
-Route::get('/mycomment/{user_id}', 'AnswerController@comment');
-Route::get('/myQuestion', function () {
-    return view('myQuestion');
-});
-
-Route::get('/view', function () {
-    return view('viewQuestions');
-});
-
-Route::get('/myProfile', function () {
-    return view('myProfile');
-});
 
 
 

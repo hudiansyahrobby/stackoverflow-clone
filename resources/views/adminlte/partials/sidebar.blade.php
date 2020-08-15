@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/home/{{ Auth::user()->id }}" class="nav-link">
+                    <a href="/myProfile/{{ Auth::user()->id }}" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             My Profile
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/myanswer/{{ Auth::user()->id }}" class="nav-link">
+                    <a href="/myAnswer/{{ Auth::user()->id }}" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             My Answers
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/mycomment/{{ Auth::user()->id }}" class="nav-link">
+                    <a href="/myComment/{{ Auth::user()->id }}" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             My Comments

@@ -60,7 +60,6 @@
                         <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                     </form>
                 </div>
-
             </div>
         @empty
             <tr>
@@ -69,11 +68,6 @@
                 </td>
             </tr>
         @endforelse
-
     </div>
-
 </div>
-
-
-
 @endsection

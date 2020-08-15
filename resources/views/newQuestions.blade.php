@@ -28,7 +28,6 @@
                     <label for="tags">Tags</label>
                     <input type="text" class="form-control @error('tags') is-invalid @enderror" id="tags" placeholder="Maksimal 3 tags. Pisahkan dengan koma, contoh: php,laravel,programming" name="tags" value="{{old('tags')}}">
                 </div>
-
                 <button type="submit" class="btn btn-primary">Submit New Question</button>
             </form>
         </div>
