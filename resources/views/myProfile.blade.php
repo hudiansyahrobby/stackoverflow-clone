@@ -27,7 +27,7 @@
                       <div class="col-sm-4 border-right">
                         <div class="description-block">
                           <h5 class="description-header">{{ $user->reputation->point }}</h5>
-                          <span class="description-text">Contribution</span>
+                          <span class="description-text">Reputation</span>
                         </div>
                         <!-- /.description-block -->
                       </div>
