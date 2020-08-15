@@ -38,7 +38,7 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $answer = new Answer;
+        //
     }
 
     /**

@@ -35,4 +35,20 @@ class Question extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    /**
+     * Get the comments for the question post.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    /**
+     * Get the answers for the question post.
+     */
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
 }

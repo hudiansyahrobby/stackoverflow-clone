@@ -42,12 +42,12 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    Comments <span class="float-right badge bg-primary">21</span>
+                                    Answer <span class="float-right badge bg-primary">{{ count($question->answers) }}</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    Likes <span class="float-right badge bg-info">10</span>
+                                    Vote <span class="float-right badge bg-info">{{ $question->vote_count }}</span>
                                 </a>
                             </li>
                             <li class="nav-item">

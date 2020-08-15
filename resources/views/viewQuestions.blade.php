@@ -48,36 +48,45 @@
                     </button>
                 </div>
             </div>
-            <div class="direct-chat-msg">
-                <div class="direct-chat-infos clearfix">
-                  <span class="direct-chat-name float-left">Alexander Pierce</span>
-                  <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                </div>
-                <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="{{ asset('/adminLTE/dist/img/user1-128x128.jpg')}}" alt="Message User Image">
-                <!-- /.direct-chat-img -->
-                <div class="direct-chat-text">
-                  Is this template really for free? That's unbelievable!
-                  <form action="" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" class="btn btn-danger btn-xs" value="Delete">
-                </form>
-                </div>
-                <!-- /.direct-chat-text -->
-                
-              </div>
-              <!-- /.direct-chat-msg -->
 
-              <form action="#" method="post">
-                <div class="input-group">
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="comment" placeholder="Type comment" name="comment" value="{{old('comment')}}">
-                  <span class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Comment</button>
-                  </span>
+            @forelse($question->comments as $comment)
+                <div class="direct-chat-msg">
+                    <div class="direct-chat-infos clearfix">
+                        <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
+                        <span class="direct-chat-timestamp float-right">{{ date('d M, g:i a', strtotime($comment->updated_at)) }}</span>
+                    </div>
+                    <!-- /.direct-chat-infos -->
+                    <img class="direct-chat-img"
+                        src="{{ asset('/adminLTE/dist/img/user1-128x128.jpg') }}"
+                        alt="Message User Image">
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text">
+                        {{ $comment->content }}
+                        <form action="" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                        </form>
+                    </div>
+                    <!-- /.direct-chat-text -->
                 </div>
-              </form>
-              <br/>
+            @empty
+                <p>Belum ada komentar</p>
+            @endforelse
+
+
+            <!-- /.direct-chat-msg -->
+            <form action="/commentQuestion/{{ $question->id }}" method="POST">
+                @csrf
+                <div class="input-group">
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="comment"
+                        placeholder="Type comment" name="comment" value="{{ old('comment') }}">
+                    <span class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Comment</button>
+                    </span>
+                </div>
+            </form>
+            <br />
         </div>
     </div>
     <a href="/answer/{{ $question->id }}" type="button" class="btn btn-primary btn-sm" style="margin-left: 20px">
@@ -125,16 +134,24 @@
             </div>
 
             <div class="d-flex">
+<<<<<<< HEAD
                 <a href="/answer/{{ $answer->id }}/edit" class="btn btn-success btn-sm mr-1">
                     Update
                 </a>
                 <form action="/answer/{{ $answer->id }}/delete" method="post">
                     @csrf
                     @method('DELETE')
+=======
+                <a href="/answer/{{ $question->id }}/edit" class="btn btn-success btn-sm mr-1">
+                    Update
+                </a>
+                <form action="/answer/delete" method="post">
+>>>>>>> b716e244db8b4de488f0c0c0cfdcf202d671b39a
                     <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                 </form>
             </div>
 
+<<<<<<< HEAD
            
 
             <div class="direct-chat-msg">
@@ -166,6 +183,40 @@
                   </span>
                 </div>
               </form>
+=======
+            <div class="direct-chat-msg">
+                <div class="direct-chat-infos clearfix">
+                    <span class="direct-chat-name float-left">Alexander Pierce</span>
+                    <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                </div>
+                <!-- /.direct-chat-infos -->
+                <img class="direct-chat-img"
+                    src="{{ asset('/adminLTE/dist/img/user1-128x128.jpg') }}"
+                    alt="Message User Image">
+                <!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                    Is this template really for free? That's unbelievable!
+                    <form action="" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger btn-xs" value="Delete">
+                    </form>
+                </div>
+                <!-- /.direct-chat-text -->
+
+            </div>
+            <!-- /.direct-chat-msg -->
+
+            <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="comment"
+                        placeholder="Type comment" name="comment" value="{{ old('comment') }}">
+                    <span class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Comment</button>
+                    </span>
+                </div>
+            </form>
+>>>>>>> b716e244db8b4de488f0c0c0cfdcf202d671b39a
 
         </div>
     </div>
