@@ -43,7 +43,7 @@ class QuestionController extends Controller
         // 2. Looping into array
         $tag_ids = [];
         foreach ($tags_arr as $tag_name) {
-            $tag = Tag::where('name', $tag_name)->first();
+            $tag = Tag::where('name', trim($tag_name))->first();
 
             // 3. If tag already exist, take the ID
             if($tag) {
@@ -120,7 +120,7 @@ class QuestionController extends Controller
         // 2. Looping into array
         $tag_ids = [];
         foreach ($tags_arr as $tag_name) {
-            $tag = Tag::where('name', $tag_name)->first();
+            $tag = Tag::where('name', trim($tag_name))->first();
 
             // 3. If tag already exist, take the ID
             if($tag) {
