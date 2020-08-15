@@ -29,6 +29,7 @@ Route::get('/question/{question_id}', 'QuestionController@show');
 Route::get('/question/{question_id}/edit', 'QuestionController@edit');
 Route::post('/question/{question_id}/update', 'QuestionController@update');
 Route::delete('/question/{question_id}/delete', 'QuestionController@destroy');
+Route::get('/question/{answer_id}/best', 'QuestionController@setBestAnswer');
 
 // Answer Route --> from AnswerController
 Route::get('/answer/{question_id}', 'AnswerController@create');

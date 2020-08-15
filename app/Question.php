@@ -26,7 +26,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'user_id'];
+    protected $fillable = ['title', 'content', 'user_id', 'best_answer_id'];
 
     /**
      * The tags that belong to the question.

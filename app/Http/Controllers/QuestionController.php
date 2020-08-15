@@ -7,6 +7,7 @@ use App\Question;
 use App\Answer;
 use App\Comment;
 use App\Tag;
+use App\Reputation;
 use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 
@@ -176,5 +177,52 @@ class QuestionController extends Controller
         Question::destroy($id);
         Alert::success('Success', 'Your Question Has been Deleted');
         return redirect('/');
+    }
+
+    /**
+     * Set the best answer
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function setBestAnswer($id)
+    {
+        // find the question
+        $question = Question::find(Answer::find($id)->question_id);
+
+        // check if the best answer is already set or not
+        if ($question->best_answer_id != null) { // if already set
+            // find the old answer and decrease 15 point from his/her reputation
+            $oldAnswer = Answer::find($question->best_answer_id);
+            $oldReputation = Reputation::where('user_id', $oldAnswer->user_id)->first();
+            $point = $oldReputation->point;
+            $point = $point - 15;
+
+            // last, we update the reputation.
+            $oldReputation->update([
+                'point' => $point
+            ]);
+        }
+
+        // update the best answer
+        $question->update(['best_answer_id' => $id]);
+
+        // add 15 point to user reputation who make the answer
+        $answer = Answer::find($id);
+        $reputation = Reputation::where('user_id', $answer->user_id)->first();
+        $point = $reputation->point;
+        $point = $point + 15;
+
+        // last, we update the reputation.
+        $reputation->update([
+            'point' => $point
+        ]);
+
+        Alert::success('Success', 'This answer is set as the best answer!');
+
+        return redirect()->action(
+            'QuestionController@show',
+            ['question_id' => Answer::find($id)->question_id]
+        );
     }
 }
