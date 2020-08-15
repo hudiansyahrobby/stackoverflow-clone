@@ -8,7 +8,7 @@
       <span class="brand-text font-weight-light"><center><b>- F H Y -</b></center></span>
     </a>
 
-    <!-- Sidebar -->
+    @if (Auth::check())
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -69,5 +69,10 @@
       </nav>
       <!-- /.sidebar-menu -->
     </div>
+    @else
+      <p class="text-white text-center mt-2">You're Not Sign In</p>
+    @endif
+    <!-- Sidebar -->
+   
     <!-- /.sidebar -->
   </aside>
