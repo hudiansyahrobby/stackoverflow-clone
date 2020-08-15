@@ -8,8 +8,6 @@ use App\User;
 
 class HomeController extends Controller
 {
-    /**
-https://www.youtube.com/     */
     public function __construct()
     {
         $this->middleware('auth')->except('index');

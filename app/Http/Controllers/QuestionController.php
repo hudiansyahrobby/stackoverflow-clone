@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use App\Comment;
 use App\Tag;
 use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
@@ -101,7 +102,13 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
-        return view('editQuestion', compact('question'));
+        $tags_name = [];
+
+        foreach ($question->tags as $tag) {
+            $tags_name[] = $tag->name;
+        }
+
+        return view('editQuestion', compact('question', 'tags_name'));
     }
 
     /**
@@ -113,11 +120,35 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $question = Question::find($id);
-        $question->title = $request->title;
-        $question->content = $request->description;
-        $question->user_id = Auth::id();
-        $question->save();
+        // Handle the tags first
+        // 1. Remove whitespace and turn to array
+        $tags_arr = explode(',', trim($request['tags']));
+
+        // 2. Looping into array
+        $tag_ids = [];
+        foreach ($tags_arr as $tag_name) {
+            $tag = Tag::where('name', $tag_name)->first();
+
+            // 3. If tag already exist, take the ID
+            if($tag) {
+                $tag_ids[] = $tag->id;
+            } 
+            // 4. If not, save it first and take the ID
+            else {
+                $new_tag = Tag::create([
+                    'name' => $tag_name
+                ]);
+                $tag_ids[] = $new_tag->id;
+            }
+        }
+
+        $question = Question::find($id)->update([
+            'title' => $request['title'],
+            'content' => $request['description'],
+            'user_id' => Auth::id(),
+        ]);
+
+        Question::find($id)->tags()->sync($tag_ids);
 
         Alert::success('Success', 'Your Question Has been Updated');
 
@@ -132,6 +163,22 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
+        // remove question_tag
+        Question::find($id)->tags()->detach();
+
+        // remove question comment
+        Comment::where('question_id', $id)->delete();
+
+        // remove answer comment
+        $answers = Answer::where('question_id', $id)->get();
+        foreach ($answers as $answer) {
+            Comment::where('answer_id', $answer->id)->delete();
+        }
+        
+        // remove answer
+        Answer::where('question_id', $id)->delete();
+
+        // finally me remove the question
         Question::destroy($id);
         Alert::success('Success', 'Your Question Has been Deleted');
         return redirect('/');
