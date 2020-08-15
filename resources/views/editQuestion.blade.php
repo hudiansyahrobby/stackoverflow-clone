@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="mt-3 ml-3">
         <div class="card p-3">
-            <form method="post" action="/question/{{ $question->id }}">
+            <form method="post" action="/question/{{ $question->id }}/update">
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>

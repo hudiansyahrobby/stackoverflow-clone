@@ -12,26 +12,6 @@ use Auth;
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,8 +25,12 @@ class CommentController extends Controller
             'answer_id' => null,
             'question_id' => $id,
         ]);
-        $question = Question::find($id);
-        return view('viewQuestions', compact('question'));
+
+        Alert::success('Success', 'Your Comment Has been Saved');
+
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $id]
+        );
     }
 
     /**
@@ -63,43 +47,14 @@ class CommentController extends Controller
             'answer_id' => $id,
             'question_id' => null,
         ]);
+
+        Alert::success('Success', 'Your Comment Has been Saved');
+        
         $answer = Answer::find($id);
-        $question = Question::find($answer->question_id);
-        return view('viewQuestions', compact('question'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $answer->question_id]
+        );
     }
 
     /**
@@ -127,6 +82,8 @@ class CommentController extends Controller
 
         Alert::success('Success', 'Your Comment Has been Deleted');
         
-        return view('viewQuestions', compact('question'));
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $question->id]
+        );
     }
 }

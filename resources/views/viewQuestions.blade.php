@@ -33,7 +33,7 @@
                         src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}"
                         alt="User Avatar" style="size: 10;margin-right:10px;">
                     <font style="font-size: 12px">{{ $question->user->name }} ( <font style="color: blue">
-                            <b>{{ $question->user->reputation->point }}</b> contribution
+                            <b>{{ $question->user->reputation->point }}</b> reputation
                         </font> )
                         <br />Post :
                         {{ date('d M Y', strtotime($question->updated_at)) }}
@@ -41,10 +41,10 @@
                 </div>
                 <div class="p-2">
                     <button type="button" class="btn btn-primary btn-sm">
-                        Likes <span class="badge badge-light">4</span>
+                        Upvote <span class="badge badge-light">4</span>
                     </button>
                     <button type="button" class="btn btn-danger btn-sm">
-                        Dislikes <span class="badge badge-light">5</span>
+                        Downvote <span class="badge badge-light">5</span>
                     </button>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     <div class="direct-chat-text">
                         {{ $comment->content }}
                         @if($comment->user_id == Auth::user()->id)
-                            <form action="/comment/{{$comment->id}}/delete" method="post">
+                            <form action="/comment/{{ $comment->id }}/delete" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger btn-xs" value="Delete">
@@ -122,7 +122,7 @@
                             src="{{ asset('/adminLTE/dist/img/user7-128x128.jpg') }}"
                             alt="User Avatar" style="size: 10;margin-right:10px;">
                         <font style="font-size: 12px">{{ $answer->user->name }} ( <font style="color: blue">
-                                <b>{{ $answer->user->reputation->point }}</b> contribution
+                                <b>{{ $answer->user->reputation->point }}</b> reputation
                             </font> )
                             <br />Post :
                             {{ date('d M Y', strtotime($answer->updated_at)) }}
@@ -131,10 +131,10 @@
 
                     <div class="p-2">
                         <button type="button" class="btn btn-primary btn-sm">
-                            Likes <span class="badge badge-light">4</span>
+                            Upvote <span class="badge badge-light">4</span>
                         </button>
                         <button type="button" class="btn btn-danger btn-sm">
-                            Dislikes <span class="badge badge-light">4</span>
+                            Downvote <span class="badge badge-light">4</span>
                         </button>
 
                     </div>
@@ -169,7 +169,7 @@
                         <div class="direct-chat-text">
                             {{ $comment->content }}
                             @if($comment->user_id == Auth::user()->id)
-                                <form action="/comment/{{$comment->id}}/delete" method="post">
+                                <form action="/comment/{{ $comment->id }}/delete" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" class="btn btn-danger btn-xs" value="Delete">

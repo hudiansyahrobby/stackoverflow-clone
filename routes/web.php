@@ -13,32 +13,44 @@
 
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
 
-// Question Route
-Route::get('/newQuestions', 'QuestionController@create');
+// Home Route --> from HomeController
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home/{user_id}', 'HomeController@show');
+Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
+
+// Question Route --> from QuestionController
+Route::get('/question', 'QuestionController@create');
 Route::post('/question', 'QuestionController@store');
 Route::get('/question/{question_id}', 'QuestionController@show');
 Route::get('/question/{question_id}/edit', 'QuestionController@edit');
-Route::post('/question/{question_id}', 'QuestionController@update');
+Route::post('/question/{question_id}/update', 'QuestionController@update');
 Route::delete('/question/{question_id}/delete', 'QuestionController@destroy');
 
-// Answer Route
+// Answer Route --> from AnswerController
+Route::get('/myanswer/{user_id}', 'AnswerController@index');
 Route::get('/answer/{question_id}', 'AnswerController@create');
 Route::post('/answer/{question_id}', 'AnswerController@store');
 Route::get('/answer/{answer_id}/edit', 'AnswerController@edit');
 Route::post('/answer/{answer_id}/update', 'AnswerController@update');
 Route::delete('/answer/{answer_id}/delete', 'AnswerController@destroy');
-Route::get('/myanswer/{user_id}', 'AnswerController@index');
-Route::get('/mycomment/{user_id}', 'AnswerController@comment');
 
 // Comment Route
 Route::post('/commentQuestion/{question_id}', 'CommentController@storeQ');
 Route::post('/commentAnswer/{answer_id}', 'CommentController@storeA');
 Route::delete('/comment/{comment_id}/delete', 'CommentController@destroy');
 
+// Vote Route
 
-// Route ga kepake
+
+// Tag Route
+Route::get('/tagQuestion/{tag_id}', 'TagController@showQuestions');
+
+
+/*
+ * Route yang belum terpakai
+ */
+Route::get('/mycomment/{user_id}', 'AnswerController@comment');
 Route::get('/myQuestion', function () {
     return view('myQuestion');
 });
@@ -51,8 +63,5 @@ Route::get('/myProfile', function () {
     return view('myProfile');
 });
 
-// Route buatan mas Yohanes
-Route::get('/home/{user_id}', 'HomeController@show');
-Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
-Route::get('/tagQuestion/{tag_id}', 'TagController@showQuestions');
+
 

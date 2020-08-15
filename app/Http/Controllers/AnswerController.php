@@ -17,11 +17,15 @@ class AnswerController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('myAnswer');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -48,8 +52,9 @@ class AnswerController extends Controller
             'question_id' => $id,
         ]);
 
-        $question = Question::find($id);
-        return view('viewQuestions', compact('question'));
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $id]
+        );
     }
 
     /**
@@ -80,8 +85,9 @@ class AnswerController extends Controller
         Alert::success('Success', 'Your Answer Has been Updated');
 
         $answer = Answer::find($id);
-        $question = Question::find($answer->question_id);
-        return view('viewQuestions', compact('question'));
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $answer->question_id]
+        );
     }
 
     /**
@@ -93,7 +99,6 @@ class AnswerController extends Controller
     public function destroy($id)
     {
         $answer = Answer::find($id);
-        $question = Question::find($answer->question_id);
 
         // remove answer comment
         Comment::where('answer_id', $id)->delete();
@@ -103,39 +108,8 @@ class AnswerController extends Controller
 
         Alert::success('Success', 'Your Answer Has been Deleted');
         
-        return view('viewQuestions', compact('question'));
-    }
-
-    /**
-     * Upvote answer.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function upvote($id)
-    {
-        //
-    }
-
-    /**
-     * Downvote answer.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function downvote($id)
-    {
-        //
-    }
-
-    /**
-     * Comment answer.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function comment($id)
-    {
-        //
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $answer->question_id]
+        );
     }
 }

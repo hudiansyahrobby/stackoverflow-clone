@@ -18,15 +18,6 @@ class QuestionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -77,7 +68,9 @@ class QuestionController extends Controller
         
         Alert::success('Success Title', 'Your Question Has been Added');
 
-        return redirect('/');
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $question->id]
+        );
     }
 
     /**
@@ -151,7 +144,9 @@ class QuestionController extends Controller
 
         Alert::success('Success', 'Your Question Has been Updated');
 
-        return redirect('/');
+        return redirect()->action(
+            'QuestionController@show', ['question_id' => $id]
+        );
     }
 
     /**
@@ -181,38 +176,5 @@ class QuestionController extends Controller
         Question::destroy($id);
         Alert::success('Success', 'Your Question Has been Deleted');
         return redirect('/');
-    }
-
-    /**
-     * Upvote Questions.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function upvote($id)
-    {
-        //
-    }
-
-    /**
-     * Downvote Questions.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function downvote($id)
-    {
-        //
-    }
-
-    /**
-     * Comment Questions.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function comment($id)
-    {
-        //
     }
 }
