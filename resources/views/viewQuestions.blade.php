@@ -53,8 +53,9 @@
                 <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
                         <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
-                        <span
-                            class="direct-chat-timestamp float-right">{{ date('d M, g:i a', strtotime($comment->updated_at)) }}</span>
+                        <span class="direct-chat-timestamp float-right">
+                            {{ date('d M, g:i a', strtotime($comment->updated_at)) }}
+                        </span>
                     </div>
                     <!-- /.direct-chat-infos -->
                     <img class="direct-chat-img"
@@ -99,7 +100,10 @@
     @forelse($question->answers as $answer)
         <div class="mt-3 ml-3">
             <div class="card p-3">
-                @if($answer->user_id == Auth::user()->id)
+
+                @if($question->user_id != $answer->user_id
+                    && $question->user_id == Auth::user()->id
+                    && $question->best_answer_id == null)
                     <div class="d-flex mb-1">
                         <button type="button" class="btn btn-warning btn-sm">
                             BEST ANSWER
@@ -138,10 +142,10 @@
 
                 @if($answer->user_id == Auth::user()->id)
                     <div class="d-flex">
-                        <a href="/answer/{{ $question->id }}/edit" class="btn btn-success btn-sm mr-1">
+                        <a href="/answer/{{ $answer->id }}/edit" class="btn btn-success btn-sm mr-1">
                             Update
                         </a>
-                        <form action="/answer/{{ $question->id }}/delete" method="post">
+                        <form action="/answer/{{ $answer->id }}/delete" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
@@ -153,8 +157,9 @@
                     <div class="direct-chat-msg">
                         <div class="direct-chat-infos clearfix">
                             <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
-                            <span
-                                class="direct-chat-timestamp float-right">{{ date('d M, g:i a', strtotime($comment->updated_at)) }}</span>
+                            <span class="direct-chat-timestamp float-right">
+                                {{ date('d M, g:i a', strtotime($comment->updated_at)) }}
+                            </span>
                         </div>
                         <!-- /.direct-chat-infos -->
                         <img class="direct-chat-img"

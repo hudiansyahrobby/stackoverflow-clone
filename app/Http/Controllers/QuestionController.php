@@ -89,8 +89,7 @@ class QuestionController extends Controller
     public function show($id)
     {
         $question = Question::find($id);
-        $answer = Answer::find($id);
-        return view('viewQuestions', compact(['question', 'answer']));
+        return view('viewQuestions', compact('question'));
     }
 
     /**

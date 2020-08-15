@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Answer;
 use App\Comment;
 use App\Question;
+use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 
 class AnswerController extends Controller
@@ -59,7 +60,8 @@ class AnswerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $answer = Answer::find($id);
+        return view('editAnswer', compact('answer'));
     }
 
     /**
@@ -71,7 +73,15 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = Answer::find($id)->update([
+            'content' => $request['description'],
+        ]);
+
+        Alert::success('Success', 'Your Answer Has been Updated');
+
+        $answer = Answer::find($id);
+        $question = Question::find($answer->question_id);
+        return view('viewQuestions', compact('question'));
     }
 
     /**
@@ -82,7 +92,18 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $answer = Answer::find($id);
+        $question = Question::find($answer->question_id);
+
+        // remove answer comment
+        Comment::where('answer_id', $id)->delete();
+        
+        // remove answer
+        Answer::destroy($id);
+
+        Alert::success('Success', 'Your Question Has been Deleted');
+        
+        return view('viewQuestions', compact('question'));
     }
 
     /**

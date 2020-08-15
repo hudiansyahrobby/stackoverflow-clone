@@ -24,8 +24,10 @@ Route::post('/question/{question_id}', 'QuestionController@update');
 Route::delete('/question/{question_id}/delete', 'QuestionController@destroy');
 
 // Answer Route
+Route::get('/answer/{question_id}', 'AnswerController@create');
+Route::post('/answer/{question_id}', 'AnswerController@store');
 Route::get('/answer/{answer_id}/edit', 'AnswerController@edit');
-//Route::post('/answer/{answer_id}', 'AnswerController@update');
+Route::post('/answer/{answer_id}/update', 'AnswerController@update');
 Route::delete('/answer/{answer_id}/delete', 'AnswerController@destroy');
 Route::get('/myanswer/{user_id}', 'AnswerController@index');
 Route::get('/mycomment/{user_id}', 'AnswerController@comment');
@@ -49,7 +51,4 @@ Route::get('/home/{user_id}', 'HomeController@show');
 Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
 Route::get('/tagQuestion/{tag_id}', 'TagController@showQuestions');
 Route::post('/commentQuestion/{question_id}', 'CommentController@storeQ');
-
-Route::get('/answer/{question_id}', 'AnswerController@create');
-Route::post('/answer/{question_id}', 'AnswerController@store');
 Route::post('/commentAnswer/{answer_id}', 'CommentController@storeA');
