@@ -16,7 +16,6 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->longText('content');
-            $table->integer('vote_count')->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

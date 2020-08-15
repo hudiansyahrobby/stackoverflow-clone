@@ -51,4 +51,12 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer');
     }
+
+    /**
+     * Get the votes for the question post.
+     */
+    public function votes()
+    {
+        return $this->hasMany('App\Vote');
+    }
 }

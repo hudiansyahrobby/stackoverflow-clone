@@ -17,7 +17,6 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 60);
             $table->longText('content');
-            $table->integer('vote_count')->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

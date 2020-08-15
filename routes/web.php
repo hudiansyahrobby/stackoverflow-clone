@@ -42,7 +42,10 @@ Route::post('/commentAnswer/{answer_id}', 'CommentController@storeA');
 Route::delete('/comment/{comment_id}/delete', 'CommentController@destroy');
 
 // Vote Route
-
+Route::get('/upvote_question/{question_id}', 'VoteController@upvoteQ');
+Route::get('/downvote_question/{question_id}', 'VoteController@downvoteQ');
+Route::get('/upvote_answer/{answer_id}', 'VoteController@upvoteA');
+Route::get('/downvote_answer/{answer_id}', 'VoteController@downvoteA');
 
 // Tag Route
 Route::get('/tag/{tag_id}/{tag_name}', 'TagController@showQuestions');

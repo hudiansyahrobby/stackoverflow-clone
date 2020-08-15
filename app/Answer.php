@@ -35,4 +35,12 @@ class Answer extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    /**
+     * Get the votes for the question post.
+     */
+    public function votes()
+    {
+        return $this->hasMany('App\Vote');
+    }
 }

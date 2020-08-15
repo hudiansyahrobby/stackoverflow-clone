@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="mt-3 ml-3">
-        @forelse($user->questions as $key => $question)
+        @forelse($user->questions->sortByDesc('updated_at') as $key => $question)
             <div class="card p-3">
                 <div class="form-group">
                     <label for="title">
@@ -35,16 +35,16 @@
                                 <b>{{ $question->user->reputation->point }}</b> reputation
                             </font> )
                             <br />Post :
-                            {{ date('d M Y', strtotime($question->created_at)) }}
+                            {{ date('d M Y, g:i a', strtotime($question->created_at)) }}
                         </font>
                     </div>
                     <div class="p-2">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Upvote <span class="badge badge-light">4</span>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            Downvote <span class="badge badge-light">5</span>
-                        </button>
+                        <a href="/upvote_question/{{ $question->id }}" type="button" class="btn btn-primary btn-sm">
+                            Upvote <span class="badge badge-light">{{ $question->votes->where('upvote', 1)->count() }}</span>
+                        </a>
+                        <a href="/downvote_question/{{ $question->id }}" type="button" class="btn btn-danger btn-sm">
+                            Downvote <span class="badge badge-light">{{ $question->votes->where('downvote', 1)->count() }}</span>
+                        </a>
                     </div>
                 </div>
                 <div class="d-flex">

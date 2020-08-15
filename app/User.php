@@ -60,4 +60,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Answer');
     }
+
+    /**
+     * Get the answers for the blog post.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

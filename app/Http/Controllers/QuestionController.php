@@ -66,7 +66,7 @@ class QuestionController extends Controller
 
         $question->tags()->sync($tag_ids);
         
-        Alert::success('Success Title', 'Your Question Has been Added');
+        Alert::success('Success', 'Your Question Has been Added');
 
         return redirect()->action(
             'QuestionController@show', ['question_id' => $question->id]

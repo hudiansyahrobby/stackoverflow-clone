@@ -39,12 +39,12 @@
                     </font>
                 </div>
                 <div class="p-2">
-                    <button type="button" class="btn btn-primary btn-sm">
-                        Upvote <span class="badge badge-light">4</span>
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm">
-                        Downvote <span class="badge badge-light">5</span>
-                    </button>
+                    <a href="/upvote_question/{{ $question->id }}" type="button" class="btn btn-primary btn-sm">
+                        Upvote <span class="badge badge-light">{{ $question->votes->where('upvote', 1)->count() }}</span>
+                    </a>
+                    <a href="/downvote_question/{{ $question->id }}" type="button" class="btn btn-danger btn-sm">
+                        Downvote <span class="badge badge-light">{{ $question->votes->where('downvote', 1)->count() }}</span>
+                    </a>
                 </div>
             </div>
 
@@ -128,12 +128,12 @@
                     </div>
 
                     <div class="p-2">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Upvote <span class="badge badge-light">4</span>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            Downvote <span class="badge badge-light">4</span>
-                        </button>
+                        <a href="/upvote_answer/{{ $answer->id }}" type="button" class="btn btn-primary btn-sm">
+                            Upvote <span class="badge badge-light">{{ $answer->votes->where('upvote', 1)->count() }}</span>
+                        </a>
+                        <a href="/downvote_answer/{{ $answer->id }}" type="button" class="btn btn-danger btn-sm">
+                            Downvote <span class="badge badge-light">{{ $answer->votes->where('downvote', 1)->count() }}</span>
+                        </a>
                     </div>
                 </div>
 

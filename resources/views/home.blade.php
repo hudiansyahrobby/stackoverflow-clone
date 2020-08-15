@@ -47,7 +47,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    Vote <span class="float-right badge bg-info">{{ $question->vote_count }}</span>
+                                    Vote <span class="float-right badge bg-info">
+                                        {{ $question->votes->where('upvote', 1)->count() - $question->votes->where('downvote', 1)->count() }}
+                                    </span>
                                 </a>
                             </li>
                             <li class="nav-item">
