@@ -32,6 +32,11 @@ Route::delete('/answer/{answer_id}/delete', 'AnswerController@destroy');
 Route::get('/myanswer/{user_id}', 'AnswerController@index');
 Route::get('/mycomment/{user_id}', 'AnswerController@comment');
 
+// Comment Route
+Route::post('/commentQuestion/{question_id}', 'CommentController@storeQ');
+Route::post('/commentAnswer/{answer_id}', 'CommentController@storeA');
+Route::delete('/comment/{comment_id}/delete', 'CommentController@destroy');
+
 
 // Route ga kepake
 Route::get('/myQuestion', function () {
@@ -50,5 +55,4 @@ Route::get('/myProfile', function () {
 Route::get('/home/{user_id}', 'HomeController@show');
 Route::get('/myQuestion/{user_id}', 'HomeController@showQuestions');
 Route::get('/tagQuestion/{tag_id}', 'TagController@showQuestions');
-Route::post('/commentQuestion/{question_id}', 'CommentController@storeQ');
-Route::post('/commentAnswer/{answer_id}', 'CommentController@storeA');
+

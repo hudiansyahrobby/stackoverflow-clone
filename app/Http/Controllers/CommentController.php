@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Comment;
 use App\Answer;
 use App\Question;
+use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 
 class CommentController extends Controller
@@ -109,6 +110,23 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $question = null;
+        // if $comment->question_id isExist means that this is question comment
+        if ($comment->question_id != null) {
+            $question = Question::find($comment->question_id);
+        } 
+        // else it means this is answer comment
+        else {
+            $answer = Answer::find($comment->answer_id);
+            $question = Question::find($answer->question_id);
+        }
+        
+        // remove comment
+        Comment::destroy($id);
+
+        Alert::success('Success', 'Your Comment Has been Deleted');
+        
+        return view('viewQuestions', compact('question'));
     }
 }

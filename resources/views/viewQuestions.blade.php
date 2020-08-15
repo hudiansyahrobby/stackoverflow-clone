@@ -65,7 +65,7 @@
                     <div class="direct-chat-text">
                         {{ $comment->content }}
                         @if($comment->user_id == Auth::user()->id)
-                            <form action="" method="post">
+                            <form action="/comment/{{$comment->id}}/delete" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger btn-xs" value="Delete">
@@ -169,7 +169,7 @@
                         <div class="direct-chat-text">
                             {{ $comment->content }}
                             @if($comment->user_id == Auth::user()->id)
-                                <form action="" method="post">
+                                <form action="/comment/{{$comment->id}}/delete" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" class="btn btn-danger btn-xs" value="Delete">

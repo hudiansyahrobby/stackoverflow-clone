@@ -101,7 +101,7 @@ class AnswerController extends Controller
         // remove answer
         Answer::destroy($id);
 
-        Alert::success('Success', 'Your Question Has been Deleted');
+        Alert::success('Success', 'Your Answer Has been Deleted');
         
         return view('viewQuestions', compact('question'));
     }
