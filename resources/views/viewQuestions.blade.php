@@ -11,9 +11,7 @@
                     </label>
                 </div>
                 <label for="content">
-                    <h5>
-                        {!! $question->content !!}
-                    </h5>
+                    {!! $question->content !!}
                 </label>
                 <br>
                 <label for="tags">
@@ -50,7 +48,7 @@
                 </div>
             </div>
 
-            @forelse($question->comments as $comment)
+            @foreach($question->comments as $comment)
                 <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
                         <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
@@ -77,10 +75,7 @@
                     </div>
                     <!-- /.direct-chat-text -->
                 </div>
-            @empty
-                <p>Belum ada komentar</p>
-            @endforelse
-
+            @endforeach
             
             <form action="/commentQuestion/{{ $question->id }}" method="POST">
                 @csrf
@@ -107,7 +102,7 @@
 
                     <div class="form-group">
                         <label for="content">
-                            <h5>{!! $answer->content !!}</h5>
+                            {!! $answer->content !!}
                         </label>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
@@ -150,7 +145,7 @@
                         @endif
                     @endif
 
-                    @forelse($answer->comments as $comment)
+                    @foreach($answer->comments as $comment)
                         <div class="direct-chat-msg">
                             <div class="direct-chat-infos clearfix">
                                 <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
@@ -177,9 +172,7 @@
                             </div>
                             <!-- /.direct-chat-text -->
                         </div>
-                    @empty
-                        <p>Belum ada komentar</p>
-                    @endforelse
+                    @endforeach
 
 
                     <form action="/commentAnswer/{{ $answer->id }}" method="post">
@@ -199,7 +192,7 @@
 
     @endforeach
 
-    @forelse($question->answers as $answer)
+    @foreach($question->answers as $answer)
         @if ($answer->id != $question->best_answer_id)
             <div class="mt-3 ml-3">
                 <div class="card p-3">
@@ -219,7 +212,7 @@
 
                     <div class="form-group">
                         <label for="content">
-                            <h5>{!! $answer->content !!}</h5>
+                            {!! $answer->content !!}
                         </label>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
@@ -262,7 +255,7 @@
                         @endif
                     @endif
 
-                    @forelse($answer->comments as $comment)
+                    @foreach($answer->comments as $comment)
                         <div class="direct-chat-msg">
                             <div class="direct-chat-infos clearfix">
                                 <span class="direct-chat-name float-left">{{ $comment->user->name }}</span>
@@ -289,9 +282,7 @@
                             </div>
                             <!-- /.direct-chat-text -->
                         </div>
-                    @empty
-                        <p>Belum ada komentar</p>
-                    @endforelse
+                    @endforeach
 
                     <form action="/commentAnswer/{{ $answer->id }}" method="post">
                         @csrf
@@ -307,9 +298,7 @@
                 </div>
             </div>
         @endif
-    @empty
-        <p>Belum ada jawaban</p>
-    @endforelse
+    @endforeach
 
 </div>
 @endsection
