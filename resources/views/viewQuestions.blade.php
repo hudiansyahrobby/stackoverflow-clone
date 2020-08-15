@@ -9,7 +9,6 @@
                     <label for="title">
                         <h3>{{ $question->title }}</h3>
                     </label>
-
                 </div>
                 <label for="content">
                     <h5>
@@ -19,7 +18,7 @@
                 <br>
                 <label for="tags">
                     @forelse($question->tags as $tag)
-                        <a href="/tagQuestion/{{ $tag->id }}">
+                        <a href="/tag/{{ $tag->id }}/{{ $tag->name }}">
                             <button class="btn btn-primary">#{{ $tag->name }}</button>
                         </a>
                     @empty
@@ -78,7 +77,6 @@
                 <p>Belum ada komentar</p>
             @endforelse
 
-
             <!-- /.direct-chat-msg -->
             <form action="/commentQuestion/{{ $question->id }}" method="POST">
                 @csrf
@@ -136,7 +134,6 @@
                         <button type="button" class="btn btn-danger btn-sm">
                             Downvote <span class="badge badge-light">4</span>
                         </button>
-
                     </div>
                 </div>
 

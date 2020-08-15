@@ -19,7 +19,6 @@
                             width: 900,
                             height: 300
                         });
-
                     </script>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Answer</button>

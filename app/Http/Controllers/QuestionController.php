@@ -37,7 +37,7 @@ class QuestionController extends Controller
     {
         // Handle the tags first
         // 1. Remove whitespace and turn to array
-        $tags_arr = explode(',', trim($request['tags']));
+        $tags_arr = explode(',', strtolower($request['tags']));
 
         // 2. Looping into array
         $tag_ids = [];
@@ -51,7 +51,7 @@ class QuestionController extends Controller
             // 4. If not, save it first and take the ID
             else {
                 $new_tag = Tag::create([
-                    'name' => $tag_name
+                    'name' => trim($tag_name)
                 ]);
                 $tag_ids[] = $new_tag->id;
             }
@@ -114,7 +114,7 @@ class QuestionController extends Controller
     {
         // Handle the tags first
         // 1. Remove whitespace and turn to array
-        $tags_arr = explode(',', trim($request['tags']));
+        $tags_arr = explode(',', strtolower($request['tags']));
 
         // 2. Looping into array
         $tag_ids = [];
@@ -128,7 +128,7 @@ class QuestionController extends Controller
             // 4. If not, save it first and take the ID
             else {
                 $new_tag = Tag::create([
-                    'name' => $tag_name
+                    'name' => trim($tag_name)
                 ]);
                 $tag_ids[] = $new_tag->id;
             }

@@ -32,7 +32,7 @@
                             <li class="nav-item">
                                 <div style="padding:10px;text-align:center;">
                                     @forelse($question->tags as $tag)
-                                        <a href="/tagQuestion/{{ $tag->id }}">
+                                        <a href="/tag/{{ $tag->id }}/{{ $tag->name }}">
                                             <button class="btn btn-primary">#{{ $tag->name }}</button>
                                         </a>
                                     @empty

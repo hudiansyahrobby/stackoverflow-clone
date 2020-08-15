@@ -16,6 +16,6 @@ class TagController extends Controller
     public function showQuestions($id)
     {
         $tag = Tag::find($id);
-        return view('tagQuestion', compact('tag'));
+        return view('showTag', compact('tag'));
     }
 }

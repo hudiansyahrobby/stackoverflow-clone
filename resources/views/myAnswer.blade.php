@@ -18,7 +18,7 @@
                     <br>
                     <label for="tags">
                         @forelse($answer->tags as $tag)
-                            <a href="/taganswer/{{ $tag->id }}">
+                            <a href="/tag/{{ $tag->id }}/{{ $tag->name }}">
                                 <button class="btn btn-primary">#{{ $tag->name }}</button>
                             </a>
                         @empty
